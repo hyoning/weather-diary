@@ -51,33 +51,33 @@ const getStyleTest = (Temperature) => {
     }
 };
 
-const getTodayLeftImg = (LongPhrase) => {
-    if (LongPhrase.includes('추움')) {
-        return '../assets/image/weather_img_1_1.png';
-    } else if (LongPhrase.includes('눈')) {
-        return '../assets/image/weather_img_4_1.png';
-    } else if (LongPhrase.includes('비')) {
-        return '../assets/image/weather_img_2_1.png';    
-    } else if (LongPhrase.includes('흐림') || LongPhrase.includes('흐려짐')) {
-        return '../assets/image/weather_img_6_1.png';    
-    } else if (TLongPhrase.includes('구름이 줄어듦')) {
-        return '../assets/image/weather_img_7_1.png';
-    }
-};
+// const getTodayLeftImg = (LongPhrase) => {
+//     if (LongPhrase.includes('추움')) {
+//         return '../assets/image/weather_img_1_1.png';
+//     } else if (LongPhrase.includes('눈')) {
+//         return '../assets/image/weather_img_4_1.png';
+//     } else if (LongPhrase.includes('비')) {
+//         return '../assets/image/weather_img_2_1.png';    
+//     } else if (LongPhrase.includes('흐림') || LongPhrase.includes('흐려짐')) {
+//         return '../assets/image/weather_img_6_1.png';    
+//     } else if (TLongPhrase.includes('구름이 줄어듦')) {
+//         return '../assets/image/weather_img_7_1.png';
+//     }
+// };
 
-const getTodayRightImg = (LongPhrase) => {
-    if (LongPhrase.includes('추움')) {
-        return '../assets/image/weather_img_1_2.png';
-    } else if (LongPhrase.includes('눈')) {
-        return '../assets/image/weather_img_4_1.png';
-    } else if (LongPhrase.includes('비')) {
-        return '../assets/image/weather_img_2_2.png';    
-    } else if (LongPhrase.includes('흐림') || LongPhrase.includes('흐려짐')) {
-        return '../assets/image/weather_img_6_2.png';    
-    } else if (TLongPhrase.includes('구름이 줄어듦')) {
-        return '../assets/image/weather_img_7_2.png';
-    }
-};
+// const getTodayRightImg = (LongPhrase) => {
+//     if (LongPhrase.includes('추움')) {
+//         return '../assets/image/weather_img_1_2.png';
+//     } else if (LongPhrase.includes('눈')) {
+//         return '../assets/image/weather_img_4_1.png';
+//     } else if (LongPhrase.includes('비')) {
+//         return '../assets/image/weather_img_2_2.png';    
+//     } else if (LongPhrase.includes('흐림') || LongPhrase.includes('흐려짐')) {
+//         return '../assets/image/weather_img_6_2.png';    
+//     } else if (TLongPhrase.includes('구름이 줄어듦')) {
+//         return '../assets/image/weather_img_7_2.png';
+//     }
+// };
 const todayRender = () => {
     const todayWeather = document.querySelector('.today'); // HTML에서 날씨 정보를 보여줄 요소를 선택
     todayWeather.innerHTML = ''; // 이전의 날씨 정보를 초기화
@@ -106,12 +106,14 @@ const todayAddRender = () => {
     todayAddWeather.innerHTML = ''; // 이전의 날씨 정보를 초기화
 
     const forecast = weatherList[0]; // 첫 번째 날씨 예보 정보 가져오기
-    const imageSrc = getTodayLeftImg(forecast.Day.LongPhrase);
-    const imageSrc2 = getTodayRightImg(forecast.Day.LongPhrase);
+    // const imageSrc = getTodayLeftImg(forecast.Day.LongPhrase);
+    // const imageSrc2 = getTodayRightImg(forecast.Day.LongPhrase);
 
     const minTemperature =  Math.round((forecast.Temperature.Minimum.Value));
     const maxTemperature =  Math.round((forecast.Temperature.Maximum.Value));
 
+    // <div class="today_left"><img src="${imageSrc}">${forecast.Day.LongPhrase}</div>
+    // <div class="today_right"><img src="${imageSrc2}">${forecast.Day.LongPhrase}</div>
     const forecastAddDetails = `
             <div class="today_addTemperature"><span class="min">${minTemperature}°</span> / <span class="max">${maxTemperature}°</span></div>
             <div class="today_left"><img src="${imageSrc}">${forecast.Day.LongPhrase}</div>
@@ -121,7 +123,7 @@ const todayAddRender = () => {
 };
 
 const getImageSrc = (IconPhrase) => {
-    if (IconPhrase.includes('맑음')) {
+    if (IconPhrase.includes('맑음') || IconPhrase.includes('화창')) {
         return '../assets/image/icon_sun.svg';
     } else if (IconPhrase.includes('흐림') || IconPhrase.includes('흐려짐')) {
         return '../assets/image/icon_cloud.svg';
