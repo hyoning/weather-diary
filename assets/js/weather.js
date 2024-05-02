@@ -116,8 +116,6 @@ const todayAddRender = () => {
     // <div class="today_right"><img src="${imageSrc2}">${forecast.Day.LongPhrase}</div>
     const forecastAddDetails = `
             <div class="today_addTemperature"><span class="min">${minTemperature}°</span> / <span class="max">${maxTemperature}°</span></div>
-            <div class="today_left"><img src="${imageSrc}">${forecast.Day.LongPhrase}</div>
-            <div class="today_right"><img src="${imageSrc2}">${forecast.Day.LongPhrase}</div>
     `;
     todayAddWeather.innerHTML = forecastAddDetails; 
 };
